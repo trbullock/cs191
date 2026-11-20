@@ -1,0 +1,946 @@
+:root {
+  color-scheme: light;
+  --ink: #21362b;
+  --muted: #718078;
+  --green: #2e6448;
+  --green-dark: #224e37;
+  --green-pale: #e8f0e9;
+  --cream: #f6f5f0;
+  --paper: #fffefa;
+  --line: #e9e9df;
+  --orange: #e78351;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 15px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+input,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header,
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 21px 6.1%;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(33, 54, 43, 0.08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 9px 9px 9px 3px;
+  color: white;
+  background: var(--green);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.brand-period {
+  color: var(--orange);
+}
+
+.header-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.header-spark {
+  margin-right: 7px;
+  color: var(--orange);
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 6.1%;
+}
+
+.intro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 248px;
+  padding: 39px 4px 35px;
+  overflow: hidden;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+.results-heading h2 {
+  margin-bottom: 13px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 58px);
+  line-height: 0.99;
+}
+
+h1 em {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.intro-copy {
+  max-width: 395px;
+  margin-bottom: 0;
+  color: #64736a;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.intro-art {
+  position: relative;
+  width: 230px;
+  height: 185px;
+  margin-right: 8%;
+}
+
+.art-sun {
+  position: absolute;
+  top: 13px;
+  right: 32px;
+  width: 130px;
+  height: 130px;
+  border: 1px solid rgba(231, 131, 81, 0.32);
+  border-radius: 50%;
+}
+
+.art-sun::before,
+.art-sun::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+}
+
+.art-sun::before {
+  inset: 14px;
+  background: #f2cfa5;
+}
+
+.art-sun::after {
+  inset: 34px;
+  background: #e98956;
+}
+
+.art-leaf {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  height: 77px;
+  border: 1px solid #568365;
+  border-radius: 100% 0 100% 0;
+  background: #a7c39e;
+  transform: rotate(38deg);
+}
+
+.art-leaf-one {
+  right: 17px;
+  bottom: 20px;
+}
+
+.art-leaf-two {
+  right: 69px;
+  bottom: 5px;
+  height: 64px;
+  background: #709879;
+  transform: rotate(-21deg);
+}
+
+.art-tomato {
+  position: absolute;
+  right: 83px;
+  bottom: 17px;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #f6f5f0;
+  border-radius: 48% 52% 51% 49%;
+  background: #d76642;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
+  align-items: start;
+  gap: 31px;
+  padding-bottom: 67px;
+}
+
+.filter-panel {
+  padding: 25px 24px 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 0 6px 22px rgba(34, 52, 40, 0.035);
+}
+
+.panel-heading,
+.results-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-heading {
+  margin-bottom: 24px;
+}
+
+.panel-heading .eyebrow,
+.results-heading .eyebrow {
+  margin-bottom: 6px;
+}
+
+.panel-heading h2,
+.results-heading h2 {
+  margin-bottom: 0;
+}
+
+.panel-heading h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.filter-icon {
+  color: var(--green);
+  font-size: 22px;
+}
+
+.filter-group {
+  min-width: 0;
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group legend,
+.field-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #31443a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.meal-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+}
+
+.meal-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.meal-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.meal-option span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: #5e6b62;
+  background: #fff;
+  font-size: 11px;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.meal-option span span {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-size: 13px;
+}
+
+.meal-option input:checked + span {
+  border-color: #8bad92;
+  color: var(--green-dark);
+  background: var(--green-pale);
+  font-weight: 700;
+}
+
+.meal-option input:focus-visible + span,
+.check-option input:focus-visible + span {
+  outline: 2px solid #62916d;
+  outline-offset: 2px;
+}
+
+.calorie-input-wrap {
+  position: relative;
+}
+
+.calorie-input-wrap input,
+select {
+  width: 100%;
+  height: 42px;
+  padding: 0 43px 0 12px;
+  border: 1px solid #dedfd5;
+  border-radius: 7px;
+  outline: 0;
+  color: var(--ink);
+  background: #fff;
+  font-size: 13px;
+}
+
+select {
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.calorie-input-wrap input:focus,
+select:focus {
+  border-color: #659275;
+  box-shadow: 0 0 0 3px rgba(101, 146, 117, 0.15);
+}
+
+.calorie-input-wrap > span {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  transform: translateY(-50%);
+}
+
+.field-hint {
+  margin: -4px 0 9px;
+  color: #89928b;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.check-list {
+  display: grid;
+  gap: 8px;
+}
+
+.nutrient-list {
+  gap: 10px;
+}
+
+.check-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.check-option input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+
+.check-option span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  color: #536158;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.check-option small {
+  color: #929991;
+  font-size: 9px;
+}
+
+.compact-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 8px;
+  row-gap: 9px;
+}
+
+.compact-list .check-option {
+  gap: 6px;
+}
+
+.compact-list .check-option span {
+  font-size: 10px;
+}
+
+.ingredient-list {
+  max-height: 156px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.find-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 7px;
+  color: white;
+  background: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 130ms ease, transform 130ms ease;
+}
+
+.find-button:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+}
+
+.find-button:focus-visible,
+.recipe-toggle:focus-visible {
+  outline: 3px solid #9dbda2;
+  outline-offset: 3px;
+}
+
+.find-button span {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.results-section {
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.results-heading {
+  align-items: end;
+  margin-bottom: 19px;
+}
+
+.results-heading h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+}
+
+.results-count {
+  margin: 0 0 4px;
+  color: #7a867d;
+  font-size: 11px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.recipe-card,
+.welcome-card,
+.empty-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 4px 18px rgba(34, 52, 40, 0.035);
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-art-wrap {
+  position: relative;
+  display: grid;
+  min-height: 168px;
+  place-items: center;
+  overflow: hidden;
+  background: var(--art-bg, #e8eddf);
+}
+
+.recipe-art-wrap::before,
+.recipe-art-wrap::after {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  content: "";
+}
+
+.recipe-art-wrap::after {
+  width: 148px;
+  height: 148px;
+}
+
+.recipe-art {
+  position: relative;
+  z-index: 1;
+  width: 160px;
+  height: 142px;
+  filter: drop-shadow(0 10px 7px rgba(37, 47, 34, 0.13));
+  transition: transform 170ms ease;
+}
+
+.recipe-card:hover .recipe-art {
+  transform: translateY(-3px) rotate(-2deg);
+}
+
+.time-pill {
+  position: absolute;
+  z-index: 2;
+  top: 11px;
+  right: 11px;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  color: #435248;
+  background: rgba(255, 255, 255, 0.86);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.recipe-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px 16px 14px;
+}
+
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #7c8980;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+}
+
+.recipe-meta .cuisine-tag {
+  color: var(--green);
+}
+
+.recipe-content h3 {
+  margin-bottom: 6px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1.18;
+}
+
+.recipe-description {
+  min-height: 34px;
+  margin-bottom: 13px;
+  color: #758078;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.nutrition-summary {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: auto;
+  padding: 11px 0;
+  border-top: 1px solid #efefe8;
+  border-bottom: 1px solid #efefe8;
+}
+
+.nutrition-summary div {
+  display: grid;
+  gap: 3px;
+  text-align: center;
+}
+
+.nutrition-summary strong {
+  color: #34493b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.nutrition-summary span {
+  color: #929991;
+  font-size: 7px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+.recipe-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 0 0;
+  border: 0;
+  color: var(--green);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.recipe-toggle span:last-child {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.recipe-details {
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid #efefe8;
+}
+
+.recipe-details h4 {
+  margin: 0 0 8px;
+  color: #3b4e41;
+  font-size: 11px;
+}
+
+.recipe-details ul,
+.recipe-details ol {
+  margin: 0 0 14px;
+  padding-left: 17px;
+  color: #657269;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.recipe-details ol li + li,
+.recipe-details ul li + li {
+  margin-top: 4px;
+}
+
+.swap-note {
+  margin: 0 0 12px;
+  padding: 9px 10px;
+  border-radius: 7px;
+  color: #445c49;
+  background: #edf4eb;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.swap-note strong {
+  font-weight: 700;
+}
+
+.allergen-line {
+  margin: 0 0 12px;
+  color: #8a7463;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.welcome-card,
+.empty-card {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  min-height: 400px;
+  padding: 54px 25px;
+  text-align: center;
+}
+
+.welcome-card .eyebrow,
+.empty-card .eyebrow {
+  align-self: end;
+}
+
+.welcome-card h3,
+.empty-card h3 {
+  margin: 0 0 9px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.welcome-card > p:last-child,
+.empty-card > p:last-child {
+  max-width: 330px;
+  margin: 0;
+  color: #78847b;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.welcome-plate {
+  position: relative;
+  display: grid;
+  width: 132px;
+  height: 132px;
+  place-items: center;
+  margin-bottom: 22px;
+  border: 1px solid #e8e8dc;
+  border-radius: 50%;
+  background: #f8f6ec;
+  box-shadow: inset 0 0 0 11px #fffefa, inset 0 0 0 12px #e8e8dc;
+}
+
+.welcome-plate span {
+  position: absolute;
+  width: 38px;
+  height: 19px;
+  border-radius: 50% 50% 45% 45%;
+  background: #90ad7b;
+  transform: rotate(-35deg) translate(-10px, -10px);
+}
+
+.welcome-plate span:nth-child(2) {
+  width: 32px;
+  height: 29px;
+  background: #e38a4f;
+  transform: translate(21px, 7px);
+}
+
+.welcome-plate span:nth-child(3) {
+  width: 35px;
+  height: 21px;
+  background: #d4b75f;
+  transform: rotate(33deg) translate(-15px, 26px);
+}
+
+.empty-card {
+  min-height: 330px;
+}
+
+.empty-icon {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  align-self: end;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  color: var(--green);
+  background: var(--green-pale);
+  font-size: 25px;
+}
+
+.nutrition-note {
+  margin: 17px 0 0;
+  color: #89928b;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(33, 54, 43, 0.08);
+}
+
+.footer-brand {
+  font-size: 15px;
+}
+
+.footer-brand .brand-mark {
+  width: 23px;
+  height: 23px;
+  font-size: 17px;
+}
+
+.site-footer p {
+  margin: 0;
+  color: #8a938c;
+  font-size: 10px;
+}
+
+@media (max-width: 880px) {
+  .site-header,
+  .site-footer {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  main {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(245px, 290px) minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .filter-panel {
+    padding: 21px 18px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .header-note {
+    max-width: 155px;
+    font-size: 10px;
+    text-align: right;
+  }
+
+  main {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .intro {
+    min-height: 226px;
+    padding: 35px 0;
+  }
+
+  .intro-art {
+    position: absolute;
+    right: -54px;
+    bottom: 11px;
+    width: 160px;
+    height: 140px;
+    margin: 0;
+    opacity: 0.55;
+    transform: scale(0.75);
+    transform-origin: bottom right;
+  }
+
+  .intro > div:first-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  .intro-copy {
+    max-width: 290px;
+    font-size: 12px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .filter-panel {
+    padding: 21px 20px;
+  }
+
+  .results-section {
+    padding-top: 0;
+  }
+
+  .results-heading h2 {
+    font-size: 24px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .recipe-art-wrap {
+    min-height: 183px;
+  }
+
+  .recipe-art {
+    width: 178px;
+    height: 155px;
+  }
+
+  .welcome-card {
+    min-height: 350px;
+  }
+
+  .site-footer {
+    padding: 17px 5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

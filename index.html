@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f5f0">
+    <meta name="description" content="Find a meal idea that fits your appetite, calorie target, and food preferences.">
+    <title>Goodfood — Find your next meal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Goodfood home">
+        <span class="brand-mark" aria-hidden="true">g</span>
+        <span>goodfood<span class="brand-period">.</span></span>
+      </a>
+      <p class="header-note"><span class="header-spark" aria-hidden="true">✳</span> A little inspiration for your plate</p>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">YOUR NEXT GOOD THING</p>
+          <h1 id="page-title">What sounds<br><em>good today?</em></h1>
+          <p class="intro-copy">Tell us what you’re in the mood for. We’ll find a few delicious ideas that fit.</p>
+        </div>
+        <div class="intro-art" aria-hidden="true">
+          <span class="art-sun"></span>
+          <span class="art-leaf art-leaf-one"></span>
+          <span class="art-leaf art-leaf-two"></span>
+          <span class="art-tomato"></span>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <aside class="filter-panel" aria-labelledby="filter-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">MAKE IT YOURS</p>
+              <h2 id="filter-title">Your preferences</h2>
+            </div>
+            <span class="filter-icon" aria-hidden="true">☷</span>
+          </div>
+
+          <form id="meal-finder">
+            <fieldset class="filter-group meal-group">
+              <legend>What kind of meal?</legend>
+              <div class="meal-options">
+                <label class="meal-option">
+                  <input type="radio" name="mealType" value="breakfast" checked>
+                  <span><span aria-hidden="true">☀</span> Breakfast</span>
+                </label>
+                <label class="meal-option">
+                  <input type="radio" name="mealType" value="lunch">
+                  <span><span aria-hidden="true">◒</span> Lunch</span>
+                </label>
+                <label class="meal-option">
+                  <input type="radio" name="mealType" value="dinner">
+                  <span><span aria-hidden="true">☾</span> Dinner</span>
+                </label>
+                <label class="meal-option">
+                  <input type="radio" name="mealType" value="snack">
+                  <span><span aria-hidden="true">✳</span> Snack</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="filter-group">
+              <label class="field-label" for="calorie-target">Calories for this meal</label>
+              <div class="calorie-input-wrap">
+                <input id="calorie-target" name="calories" type="number" min="150" max="1800" step="25" value="500" required>
+                <span>kcal</span>
+              </div>
+              <p class="field-hint">We’ll look within 300 calories of your target.</p>
+            </div>
+
+            <div class="filter-group">
+              <label class="field-label" for="cuisine">Cuisine</label>
+              <select id="cuisine" name="cuisine">
+                <option value="any">Surprise me — any cuisine</option>
+                <option value="American">American</option>
+                <option value="Indian">Indian-inspired</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese-inspired</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican-inspired</option>
+              </select>
+            </div>
+
+            <fieldset class="filter-group">
+              <legend>Nutrition preferences</legend>
+              <p class="field-hint">Choose any that sound right.</p>
+              <div class="check-list nutrient-list">
+                <label class="check-option"><input type="checkbox" name="nutrition" value="highProtein"><span>Higher protein <small>25g+</small></span></label>
+                <label class="check-option"><input type="checkbox" name="nutrition" value="lowerCarb"><span>Lower carb <small>45g or less</small></span></label>
+                <label class="check-option"><input type="checkbox" name="nutrition" value="lowerFat"><span>Lower fat <small>20g or less</small></span></label>
+                <label class="check-option"><input type="checkbox" name="nutrition" value="highFiber"><span>Higher fiber <small>8g+</small></span></label>
+                <label class="check-option"><input type="checkbox" name="nutrition" value="lowerSodium"><span>Lower sodium <small>600mg or less</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend>Allergens to exclude</legend>
+              <p class="field-hint">Recipes containing these are always left out.</p>
+              <div id="allergen-options" class="check-list compact-list"></div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend>Ingredients you’d rather skip</legend>
+              <p class="field-hint">We’ll suggest a swap when we can.</p>
+              <div id="ingredient-options" class="check-list compact-list ingredient-list"></div>
+            </fieldset>
+
+            <button class="find-button" type="submit">
+              Find my meals <span aria-hidden="true">↗</span>
+            </button>
+          </form>
+        </aside>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow">A FEW IDEAS FOR YOU</p>
+              <h2 id="results-title">Your next bite</h2>
+            </div>
+            <p id="results-count" class="results-count" aria-live="polite"></p>
+          </div>
+          <div id="results" class="results-grid" aria-live="polite">
+            <div class="welcome-card">
+              <div class="welcome-plate" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <p class="eyebrow">READY WHEN YOU ARE</p>
+              <h3>A meal that feels like you.</h3>
+              <p>Pick a meal type and a few preferences, then let the good ideas roll in.</p>
+            </div>
+          </div>
+          <p class="nutrition-note">
+            Nutrition values are estimates. Check ingredient labels and avoid cross-contact when managing an allergy.
+            This app can’t diagnose allergies.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="Goodfood home">
+        <span class="brand-mark" aria-hidden="true">g</span>
+        <span>goodfood<span class="brand-period">.</span></span>
+      </a>
+      <p>Made for everyday appetites.</p>
+    </footer>
+  </body>
+</html>
